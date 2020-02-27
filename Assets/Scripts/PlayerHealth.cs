@@ -12,10 +12,10 @@ public class PlayerHealth : MonoBehaviour
     public float flashSpeed= 5f;
     public Color flashColour = new Color(1f, 0f, 0f, 0.1f); 
     
-    Animator anim;
-    PlayerMovements playerMove;
-    bool isDead;
-    bool damaged;
+    private Animator anim;
+    private PlayerMovements playerMove;
+    private bool isDead;
+    private bool damaged;
 
     void Start ()
     {
@@ -53,8 +53,9 @@ public class PlayerHealth : MonoBehaviour
     {
         isDead = true;
         anim.SetTrigger ("Die");
-        playerShooting.enabled = false;
+        transform.position = new Vector2(0, 5);
+        currentHealth = startingHealth;
     }
 
-    
+
 }
