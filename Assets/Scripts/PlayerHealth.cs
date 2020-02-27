@@ -8,12 +8,12 @@ public class PlayerHealth : MonoBehaviour
     public int startingHealth=100;  //santé de départ
     public int currentHealth;       //santé courante
     public Slider healthSlider;     //slider implémenté dans l'UI sur Unity
-    public Image DamageImage;       //image rouge qui flash sur l'écran
+    public Image damageImage;       //image rouge qui flash sur l'écran
     public float flashSpeed= 5f;    //vitesse du flash
     public Color flashColour = new Color(1f, 0f, 0f, 0.1f);    //couleur de l'image rouge
     
     private Animator anim;          //appel au component Animator
-    private PlayerMovements playerMove;     //appel au script PlayerMovements
+    private PlayerMovements playerMovement;     //appel au script PlayerMovements
     private bool isDead;            //boolean mort
     private bool damaged;           //boolean pris des dégats
 
