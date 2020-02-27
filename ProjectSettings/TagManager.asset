@@ -6,6 +6,7 @@ TagManager:
   tags:
   - DeathZone
   - ennemi
+  - Terrain
   layers:
   - Default
   - TransparentFX
