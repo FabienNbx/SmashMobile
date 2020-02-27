@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - DeathZone
+  - ennemi
+  - Terrain
   layers:
   - Default
   - TransparentFX
@@ -14,7 +16,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Background
   - 
   - 
   - 
@@ -41,4 +43,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 3825784243
+    locked: 0
+  - name: Terrain
+    uniqueID: 189534151
+    locked: 0
+  - name: Player
+    uniqueID: 2875964069
+    locked: 0
+  - name: Hide
+    uniqueID: 1517796011
     locked: 0

@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class PlayerMovements : MonoBehaviour
 {
+    public float jumpForce;
+    public float speed;
+    [HideInInspector]
+    public int look = 1; // 1 : regarde a droite, -1 à gauche
+
     private PlayerInput inputs;
     private Rigidbody2D rb;
     private bool isJumping = false;
 
-    public float jumpForce;
-    public float speed;
-    // Start is called before the first frame update
     void Start()
     {
         inputs = GetComponent<PlayerInput>();
@@ -32,14 +34,13 @@ public class PlayerMovements : MonoBehaviour
     {
         Vector3 movement = new Vector3(inputs.direction,0,0);
         transform.Translate(movement * speed * Time.deltaTime);
+        look = inputs.direction != 0 ? inputs.direction : look;
     }
 
     private void jump()
     {
         isJumping = true;
-        Debug.Log("jump function");
         rb.velocity = new Vector2(0, jumpForce);
-        //rb.AddForce(new Vector2(0, jumpForce));
     }
 
     private void checkStopJump()

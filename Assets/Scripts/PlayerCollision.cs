@@ -4,13 +4,7 @@ using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision) //Si le player tombe de la map, il réapparait
     {
         if(collision.gameObject.CompareTag("DeathZone"))
         {
@@ -18,8 +12,4 @@ public class PlayerCollision : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        
-    }
 }
