@@ -6,11 +6,24 @@ using Photon.Pun;
 public enum GameState {INTRO, MENU, PLAYING, DEAD, GAMEOVER};
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
     public int lives=3;
     Animator anim;
     void Start()
     {
         anim = GetComponent <Animator> ();
+        MakeSingleton();
+    }
+    void MakeSingleton()
+    {
+        if (instance!=null)
+        {
+            Destroy(gameObject);
+        }else
+        {
+            instance=this;
+            DontDestroyOnLoad(gameObject);
+        }
     }
     public void PlayerDead()
     {   
