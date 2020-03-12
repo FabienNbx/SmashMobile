@@ -1,8 +1,9 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireBallMovement : MonoBehaviour
+public class FireBallMovement : MonoBehaviourPun
 {
     public int speed;
 
@@ -23,14 +24,22 @@ public class FireBallMovement : MonoBehaviour
 
     public void DestroyObjectDelayed()
     {
-        Destroy(gameObject, timeDestruction); //Detruit l'objet après un certain temps passé en paramètre
+        if (!photonView.IsMine && PhotonNetwork.IsConnected) return;
+        StartCoroutine(WaitBeforeDestroy()); //Detruit l'objet après un certain temps passé en paramètre
+    }
+
+    private IEnumerator WaitBeforeDestroy ()
+    {
+        yield return new WaitForSeconds(timeDestruction);
+        PhotonNetwork.Destroy(gameObject);
     }
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.gameObject.CompareTag("ennemi") || other.gameObject.CompareTag("Terrain"))
+        if (!photonView.IsMine && PhotonNetwork.IsConnected) return;
+        if (other.gameObject.CompareTag("ennemi") || other.gameObject.CompareTag("Terrain"))
         {
-            Destroy(gameObject);
+            PhotonNetwork.Destroy(gameObject);
         }
     }
 
