@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
+    public GameManager GM;
     public int startingHealth=100;  //santé de départ
     public int currentHealth;       //santé courante
     public Slider healthSlider;     //slider implémenté dans l'UI sur Unity
@@ -46,6 +47,7 @@ public class PlayerHealth : MonoBehaviour
         if(currentHealth <= 0 && !isDead)   //si santé atteint zéro et joueur pas déjà mort
         {
             Death ();                       //tuer le joueur
+            GM.PlayerDead();
         }
     }
 
